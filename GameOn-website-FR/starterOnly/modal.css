@@ -322,7 +322,8 @@ input[data-error]::after {
   transform: rotate(-45deg);
 }
 .btn-submit,
-.btn-signup {
+.btn-signup,
+.btn-close {
   background: #fe142f;
   display: block;
   margin: 0 auto;
@@ -333,6 +334,27 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
+
+#confirmation {
+  height: 754px;
+  width: 66%;
+  margin: auto;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#confirmation h1 {
+  text-align: center;
+  font-size: 2rem;
+}
+
+#confirmation .btn-close {
+  position: absolute;
+  bottom: 20px;
+  left : 32%;
+}
+
 /* custom select styles */
 .custom-select {
   position: relative;

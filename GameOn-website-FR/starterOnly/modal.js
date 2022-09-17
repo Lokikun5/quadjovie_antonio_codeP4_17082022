@@ -13,7 +13,6 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const modalClose = document.querySelector(".close");
 
-
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -30,10 +29,10 @@ function close() {
   modalbg.style.display = "none";
 }
 
-// formulaire DOM elements
-const myForm = document.getElementById ('myForm');
+// Formulaire dom element
+const form = document.getElementById ('form');
 const firstname = document.getElementById ('firstname');
-const last = document.getElementById ('lastname');
+const lastname = document.getElementById ('lastname');
 const mail = document.getElementById ('yourMail');
 const birth = document.getElementById ('birthday');
 const tournament = document.getElementById('howManyTournament');
@@ -43,60 +42,129 @@ const location3 =  document.getElementById("location3");
 const location4 =  document.getElementById("location4");
 const location5 =  document.getElementById("location5");
 const location6 =  document.getElementById("location6");
-const checkbox1CGU = document.getElementById("checkbox1");
- 
-// formulaire regex 
-  const mailRegex = /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
-  const nameRegex = /^[a-zA-Z-\s]+$/;
+const checkbox1CGU = document.getElementById("checkbox1"); 
+const dateFormat = /^\d{2}[./-]\d{2}[./-]\d{4}$/;
+const numbers = /^[0-9]+$/;
+const mailRegex = /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
+const birthdayRegex = /^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/;
 
-// fonction validation du mail
+// error validation dom element
 
-myForm.addEventListener('submit', function(e){
+const errorFirst = document.getElementById ('error-first');
+const errorLast = document.getElementById ('error-last');
+const errorMail = document.getElementById ('error-mail');
+const errorBirth = document.getElementById ('error-birth');
+const errorQuantity = document.getElementById ('error-howMany');
+const errorCity = document.getElementById ('error-city');
+const errorValidation = document.getElementById ('error-validation');
 
-  if (firstname.value === "" || firstname.value.length< 2) { 
-    alert("Complétez le champ prénom !");
-    e.preventDefault();
-  }  else if (nameRegex.test(firstname.value) == false){
-    alert("champ non valide !");
-    e.preventDefault();
+// messages de validation
+
+const confirmation = document.getElementById ('confirmation');
+const confirmationCloseBtn = document.getElementsByClassName('btn-close');
+confirmationCloseBtn[0].addEventListener("click", close);
+
+// functions validation formulaire 
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+})
+
+function validate () {
+  let firstChecked;
+  let lastChecked;
+  let mailChecked;
+  let birthChecked;
+  let tournamentChecked;
+  let radioChecked;
+  let CGUChecked;
+
+  if (!firstname.value.match(/(.*[a-z]){2}/i) || firstname.value == ' ' || firstname.value.length < 2) {
+    errorFirst.innerText = 'Prénom invalid !';
+    errorFirst.style.color = 'red';
+    errorFirst.style.fontSize = '0.8rem';
+    errorFirst.style.marginTop = '10px';
+    firstname.style.border = 'solid red 2px';
+  } else {
+    errorFirst.style.display = 'none';
+    firstname.style.border = 'none';
+    firstChecked = true;
+  };
+
+  if (!lastname.value.match(/(.*[a-z]){2}/i) || lastname.value == ' ' || lastname.value == null || lastname.value.length < 2) { 
+    errorLast.innerText = 'Nom invalid !';
+    errorLast.style.color = 'red';
+    errorLast.style.fontSize = '0.8rem';
+    errorLast.style.marginTop = '10px';
+    lastname.style.border = 'solid red 2px';      
+}  else {
+  errorLast.style.display = 'none';
+  lastname.style.border = 'none';
+  lastChecked = true;
+};
+
+if (!mailRegex.test(mail.value)) { 
+  errorMail.innerText = 'Mail invalid !';
+  errorMail.style.color = 'red';
+  errorMail.style.fontSize = '0.8rem';
+  errorMail.style.marginTop = '10px';
+  mail.style.border = 'solid red 2px';
+} else {
+errorMail.style.display = 'none';
+mail.style.border = 'none';
+mailChecked = true;
+};
+
+if (!birth.value.match(birthdayRegex)) { 
+  errorBirth.innerText = 'Veuillez remplir votre date danniversaire';
+  errorBirth.style.color = 'red';
+  errorBirth.style.fontSize = '0.8rem';
+  errorBirth.style.marginTop = '10px';
+  birth.style.border = 'solid red 2px';
+  } else {
+  errorBirth.style.display = 'none';
+  birth.style.border = 'none';
+  birthChecked = true;      
   }
 
-  if (last.value === "" || last.value.length< 2) {
-    alert("Complétez le champ prénom !");
-    e.preventDefault();
-  }  else if (nameRegex.test(last.value) == false){
-    alert("champ non valide !");
-    e.preventDefault();
-  }
+  if (!tournament.value.match(numbers)) { 
+    errorQuantity.innerText = 'Vous devez indiquer un nombre';
+    errorQuantity.style.color = 'red';
+    errorQuantity.style.fontSize = '0.8rem';
+    errorQuantity.style.marginTop = '10px';
+    tournament.style.border = 'solid red 2px';
+  } else {
+    errorQuantity.style.display = 'none';
+    tournament.style.border = 'none';
+    tournamentChecked = true;
+  };
 
-  if (mail.value === "") {
-    alert("Complétez le champ mail !");
-    e.preventDefault();
-  }  else if (mailRegex.test(mail.value) == false){
-    alert("champ non valide !");
-    e.preventDefault();
-  }
-  if (!birth.value.match(dateFormat)) {
-    alert("Complétez le champ Date de naissance !");
-    e.preventDefault();
-  }
+  if (!location1.checked && !location2.checked && !location3.checked && !location4.checked && !location5.checked && !location6.checked) { 
+    errorCity.innerText = 'choisissez une ville';
+    errorCity.style.color = 'red';
+    errorCity.style.fontSize = '0.8rem';
+    errorCity.style.marginTop = '10px';          
+  } else {
+    errorCity.style.display = 'none';
+    radioChecked = true;
+  };
 
-  if (!tournament.value.match(numbers)) {
-    alert ("Veuillez indiquer le nombre de tournois");
-    e.preventDefault();
-  }
+  if (!checkbox1CGU.checked) {
+    errorValidation.innerText = 'veuillez accepter les conditions d\'utilisation';
+    errorValidation.style.color = 'red';
+    errorValidation.style.fontSize = '0.8rem';
+    errorValidation.style.marginTop = '10px';
+    errorValidation.style.marginBottom = '20px';
+  } else {
+    errorValidation.style.display = 'none';
+    CGUChecked = true;
+  };
 
-  if ((!location1.checked)|| (!location2.checked) || (!location3.checked)
-      ||(!location4.checked) ||(!location5.checked) ||(!location6.checked)) {
-      alert("Veuillez choisir une ville");
-      e.preventDefault();
+  // validation final du formulaire
+  if (firstChecked == true && lastChecked == true && mailChecked == true && tournamentChecked == true && radioChecked == true && CGUChecked == true && birthChecked == true) {
+    form.style.display = "none";
+    confirmation.style.display = "flex";
   }
+}
 
-  if (!checkbox1CGU.checked){
-    alert("Veuillez accepter les condition d'utilisation");
-    e.preventDefault();
-  }
-  console.log('coucou');
-  
-});
 

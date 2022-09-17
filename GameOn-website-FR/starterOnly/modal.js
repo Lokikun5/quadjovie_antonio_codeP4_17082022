@@ -43,11 +43,10 @@ const location4 =  document.getElementById("location4");
 const location5 =  document.getElementById("location5");
 const location6 =  document.getElementById("location6");
 const checkbox1CGU = document.getElementById("checkbox1"); 
-const dateFormat = /^\d{2}[./-]\d{2}[./-]\d{4}$/;
 const numbers = /^[0-9]+$/;
 const mailRegex = /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
 const birthdayRegex = /^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/;
-
+const nameRegex = /(.*[a-z]){2}/i;
 // error validation dom element
 
 const errorFirst = document.getElementById ('error-first');
@@ -79,7 +78,7 @@ function validate () {
   let radioChecked;
   let CGUChecked;
 
-  if (!firstname.value.match(/(.*[a-z]){2}/i) || firstname.value == ' ' || firstname.value.length < 2) {
+  if (!firstname.value.match(nameRegex) || firstname.value == ' ' || firstname.value.length < 2) {
     errorFirst.innerText = 'Prénom invalid !';
     errorFirst.style.color = 'red';
     errorFirst.style.fontSize = '0.8rem';
@@ -91,7 +90,7 @@ function validate () {
     firstChecked = true;
   };
 
-  if (!lastname.value.match(/(.*[a-z]){2}/i) || lastname.value == ' ' || lastname.value == null || lastname.value.length < 2) { 
+  if (!lastname.value.match(nameRegex) || lastname.value == ' ' || lastname.value == null || lastname.value.length < 2) { 
     errorLast.innerText = 'Nom invalid !';
     errorLast.style.color = 'red';
     errorLast.style.fontSize = '0.8rem';

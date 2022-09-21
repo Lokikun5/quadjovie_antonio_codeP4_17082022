@@ -43,6 +43,7 @@ const location4 =  document.getElementById("location4");
 const location5 =  document.getElementById("location5");
 const location6 =  document.getElementById("location6");
 const checkbox1CGU = document.getElementById("checkbox1"); 
+// Regex validation
 const numbers = /^[0-9]+$/;
 const mailRegex = /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
 const birthdayRegex = /^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/;
@@ -79,11 +80,11 @@ function validate () {
   let CGUChecked;
 
   if (!firstname.value.match(nameRegex) || firstname.value == ' ' || firstname.value.length < 2) {
-    errorFirst.innerText = 'Prénom invalid !';
-    errorFirst.style.color = 'red';
+    errorFirst.innerText = 'Veuillez renseigner un prénom valide';
+    errorFirst.style.color = '#FF4E60';
     errorFirst.style.fontSize = '0.8rem';
     errorFirst.style.marginTop = '10px';
-    firstname.style.border = 'solid red 2px';
+    firstname.style.border = 'solid #FF4E60 2px';
   } else {
     errorFirst.style.display = 'none';
     firstname.style.border = 'none';
@@ -91,11 +92,11 @@ function validate () {
   };
 
   if (!lastname.value.match(nameRegex) || lastname.value == ' ' || lastname.value == null || lastname.value.length < 2) { 
-    errorLast.innerText = 'Nom invalid !';
-    errorLast.style.color = 'red';
+    errorLast.innerText = 'Veuillez renseigner un nom valide';
+    errorLast.style.color = '#FF4E60';
     errorLast.style.fontSize = '0.8rem';
     errorLast.style.marginTop = '10px';
-    lastname.style.border = 'solid red 2px';      
+    lastname.style.border = 'solid #FF4E60 2px';      
 }  else {
   errorLast.style.display = 'none';
   lastname.style.border = 'none';
@@ -103,11 +104,11 @@ function validate () {
 };
 
 if (!mailRegex.test(mail.value)) { 
-  errorMail.innerText = 'Mail invalid !';
-  errorMail.style.color = 'red';
+  errorMail.innerText = 'Veuillez renseigner une adresse mail valide';
+  errorMail.style.color = '#FF4E60';
   errorMail.style.fontSize = '0.8rem';
   errorMail.style.marginTop = '10px';
-  mail.style.border = 'solid red 2px';
+  mail.style.border = 'solid #FF4E60 2px';
 } else {
 errorMail.style.display = 'none';
 mail.style.border = 'none';
@@ -116,10 +117,10 @@ mailChecked = true;
 
 if (!birth.value.match(birthdayRegex)) { 
   errorBirth.innerText = 'Veuillez remplir votre date danniversaire';
-  errorBirth.style.color = 'red';
+  errorBirth.style.color = '#FF4E60';
   errorBirth.style.fontSize = '0.8rem';
   errorBirth.style.marginTop = '10px';
-  birth.style.border = 'solid red 2px';
+  birth.style.border = 'solid #FF4E60 2px';
   } else {
   errorBirth.style.display = 'none';
   birth.style.border = 'none';
@@ -128,10 +129,10 @@ if (!birth.value.match(birthdayRegex)) {
 
   if (!tournament.value.match(numbers)) { 
     errorQuantity.innerText = 'Vous devez indiquer un nombre';
-    errorQuantity.style.color = 'red';
+    errorQuantity.style.color = '#FF4E60';
     errorQuantity.style.fontSize = '0.8rem';
     errorQuantity.style.marginTop = '10px';
-    tournament.style.border = 'solid red 2px';
+    tournament.style.border = 'solid #FF4E60 2px';
   } else {
     errorQuantity.style.display = 'none';
     tournament.style.border = 'none';
@@ -140,7 +141,7 @@ if (!birth.value.match(birthdayRegex)) {
 
   if (!location1.checked && !location2.checked && !location3.checked && !location4.checked && !location5.checked && !location6.checked) { 
     errorCity.innerText = 'choisissez une ville';
-    errorCity.style.color = 'red';
+    errorCity.style.color = '#FF4E60';
     errorCity.style.fontSize = '0.8rem';
     errorCity.style.marginTop = '10px';          
   } else {
@@ -150,7 +151,7 @@ if (!birth.value.match(birthdayRegex)) {
 
   if (!checkbox1CGU.checked) {
     errorValidation.innerText = 'veuillez accepter les conditions d\'utilisation';
-    errorValidation.style.color = 'red';
+    errorValidation.style.color = '#FF4E60';
     errorValidation.style.fontSize = '0.8rem';
     errorValidation.style.marginTop = '10px';
     errorValidation.style.marginBottom = '20px';

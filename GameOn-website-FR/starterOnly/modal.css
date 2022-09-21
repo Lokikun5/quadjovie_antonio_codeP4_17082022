@@ -168,7 +168,16 @@ main {
   overflow: auto;
   background-color: rgba(26, 39, 156, 0.4);
 }
-
+@media screen and (max-width: 800px) {*
+  .bground{
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 10.73%;
+    bottom: 0%;
+  }
+  
+}
 .content {
   margin: 5% auto;
   width: 100%;
@@ -327,7 +336,7 @@ input[data-error]::after {
   background: #fe142f;
   display: block;
   margin: 0 auto;
-  border-radius: 7px;
+  border-radius: 8px;
   font-size: 1rem;
   padding: 12px 82px;
   color: #fff;
@@ -351,8 +360,10 @@ input[data-error]::after {
 
 #confirmation .btn-close {
   position: absolute;
-  bottom: 20px;
-  left : 32%;
+  left: 0%;
+  right: 0%;
+  
+  bottom: 2.5%;
 }
 
 /* custom select styles */

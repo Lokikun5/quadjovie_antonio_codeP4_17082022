@@ -77,7 +77,7 @@ function validate() {
   let radioChecked;
   let CGUChecked;
 
-  if (
+  if ( //Vérification du champ prénom
     !firstname.value.match(nameRegex) ||
     firstname.value == " " ||
     firstname.value.length < 2
@@ -90,7 +90,7 @@ function validate() {
     firstChecked = true;
   }
 
-  if (
+  if (//Vérification du champ nom
     !lastname.value.match(nameRegex) ||
     lastname.value == " " ||
     lastname.value == null ||
@@ -104,7 +104,7 @@ function validate() {
     lastChecked = true;
   }
 
-  if (!mailRegex.test(mail.value)) {
+  if (!mailRegex.test(mail.value)) {//Vérification du champ mail
     errorMail.style.display = "block";
     mail.style.border = "solid #FF4E60 2px";
   } else {
@@ -113,7 +113,7 @@ function validate() {
     mailChecked = true;
   }
 
-  if (!birth.value.match(birthdayRegex)) {
+  if (!birth.value.match(birthdayRegex)) {//Vérification du champ date de naissance 
     errorBirth.style.display = "block";
     birth.style.border = "solid #FF4E60 2px";
   } else {
@@ -122,7 +122,7 @@ function validate() {
     birthChecked = true;
   }
 
-  if (!tournament.value.match(numbers)) {
+  if (!tournament.value.match(numbers)) {//Vérification du champ tournoi
     errorQuantity.style.display = "block";
     tournament.style.border = "solid #FF4E60 2px";
   } else {
@@ -132,7 +132,7 @@ function validate() {
   }
 
   radioChecked = false;
-  for (let i = 0; i < locations.length; i++) {
+  for (let i = 0; i < locations.length; i++) {//Vérification du champ locations
     if (locations[i].checked) {
       radioChecked = true;
     }

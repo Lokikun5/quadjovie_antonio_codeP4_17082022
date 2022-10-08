@@ -40,7 +40,7 @@ const locations = document.getElementsByName("location");
 
 const checkbox1CGU = document.getElementById("checkbox1");
 // Regex validation
-const numbers = /^[0-9]+$/;
+const numbers = /^[1-9]+$/;
 const mailRegex =
   /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
 const birthdayRegex = /^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/;
